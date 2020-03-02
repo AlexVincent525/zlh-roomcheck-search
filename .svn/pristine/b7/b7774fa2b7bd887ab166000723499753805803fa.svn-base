@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>宿舍成绩查询</title>
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-v3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-v3.3.1/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-table/bootstrap-table.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+</head>
+<body class="animated fadeIn hidden">
+	<div class="container">
+        <div class="userProfile">
+            <div class="userAvatar">
+                <a id="userRefresh" class="btn circleBtn">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </a>
+                <div class="userAvatar avatar">
+                    <a href="/">
+                        <img src="/assets/image/avatar.png" alt="" />
+                    </a>
+                </div>
+                <a id="userContact" class="btn circleBtn" data-toggle="modal" data-target="#telModal">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                </a>
+            </div>
+            <div class="userInfo">
+                <h3 class="userName">集大水院自律会</h3>
+                <p class="userNumber">宿舍成绩查询</p>
+            </div>
+        </div>
+        <div class="billList">
+            <div class="billListCategory">
+                <a class="billListCategory switched">成绩查询</a>
+            </div>
+            <div class="billListTable">
+            	<div class="listSearch">
+                    <span>日期：</span>
+                    <input id="datepicker" type="text" class="form-control">
+            		<button id="tableFetch" class="btn" id="search">查询</button>
+            	</div>
+                <table id="table">
+                </table>
+            </div>
+        </div>
+        <div class="modal fade" id="telModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title text-center" id="myModalLabel">
+                            集美大学水产学院自律会宿管部
+                        </h4>
+                    </div>
+                    <div class="modal-body text-center">
+                        负责人联系QQ：2252994060
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+    <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(
+            unescape("%3Cspan class='hidden' id='cnzz_stat_icon_1261736809'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261736809' type='text/javascript'%3E%3C/script%3E")
+        );
+    </script>
+    <script src="/assets/vendor/jquery-v1.11.3/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap-v3.3.1/js/bootstrap.min.js"></script>
+    <script src="/assets/vendor/raven-v3.14.0/raven.min.js"></script>
+    <script src="/assets/vendor/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/assets/vendor/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+</body>
+</html>

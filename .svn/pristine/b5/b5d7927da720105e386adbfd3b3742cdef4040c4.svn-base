@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<title>宿舍成绩上传</title>
+		<link rel="icon" type="image/ico" href="/favicon.ico" />
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/assets/admin/css/vendor/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/fileinput.css">
+		<link rel="stylesheet" href="/assets/admin/css/vendor/animate.css">
+		<link rel="stylesheet" href="/assets/admin/css/vendor/font-awesome.min.css">
+		<link rel="stylesheet" href="/assets/admin/js/vendor/animsition/css/animsition.min.css">
+		<link rel="stylesheet" href="/assets/admin/css/main.min.css">
+	</head>
+	<body id="minovate" class="appWrapper">
+		<div id="wrap" class="animsition">
+			<section id="header">
+				<header class="clearfix">
+					<div class="branding">
+						<a class="brand" href="/admin">
+							<span><strong>宿舍成绩</strong> 上传</span>
+						</a>
+						<a role="button" tabindex="0" class="offcanvas-toggle visible-xs-inline"><i class="fa fa-bars"></i></a>
+					</div>
+					<ul class="nav-right pull-right list-inline">
+						<li class="weather">
+							<span></span>
+						</li>
+						<li class="systime">
+							<strong><span id="systime"></span></strong>
+						</li>
+						<li class="dropdown nav-profile">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+								<span>UserName<i class="fa fa-angle-down"></i></span>
+							</a>
+							<ul class="dropdown-menu animated littleFadeInRight" role="menu">
+								<li>
+									<a href="/admin/logout" role="button" tabindex="0">
+										<span><i class="fa fa-sign-out"></i>注销</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</header>
+			</section>
+			<div id="controls">
+				<aside id="sidebar">
+					<div id="sidebar-wrap">
+						<div class="panel-group slim-scroll" role="tablist">
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" href="#sidebarNav">导航<i class="fa fa-angle-up"></i></a>
+									</h4>
+								</div>
+								<div id="sidebarNav" class="panel-collapse collapse in" role="tabpanel">
+									<div class="panel-body">
+										<ul id="navigation">
+											<li class="active"><a href="/admin"><i class="fa fa-dashboard"></i> <span>总览</span></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+			<section id="content">
+				<div class="page page-dashboard">
+					<div class="pageheader">
+						<h2>总览 <span>// Overview your status.</span></h2>
+						<div class="page-bar">
+							<ul class="page-breadcrumb">
+								<li>
+									<a href="/admin"><i class="fa fa-home"></i>主页</a>
+								</li>
+								<li>
+									<a href="/admin">总览</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+                        <div class="col-md-6">
+                            <section class="tile">
+                                <div class="tile-header dvd dvd-btm">
+                                    <h1 ><strong>总上传文件</strong></h1>
+                                </div>
+                                <div class="tile-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            
+                        </div>
+						<div class="col-md-6">
+							<section class="tile tile-simple">
+								<div class="tile-widget bg-dutch text-center p-30">
+									<i class="fa fa-eye fa-4x"></i>
+								</div>
+								<div class="tile-body text-center">
+									<h1 class="m-0">964</h1>
+									<span class="text-muted">Visits</span>
+								</div>
+							</section>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<section class="tile">
+								<div class="tile-header dvd dvd-btm">
+									<h1 ><strong>总上传文件</strong></h1>
+								</div>
+								<div class="tile-body">
+									<div class="row">
+										<div class="col-md-12">
+											<table class="table table-hover">
+												<tr>
+													<th>#</th>
+													<th>文件名</th>
+													<th>下载</th>
+                                                    <th>上传用户</th>
+													<th>上传时间</th>
+												</tr>
+												<?php $__currentLoopData = $files; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $file): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+													<tr>
+														<td><?php echo e($file->id); ?></td>
+														<td><?php echo e($file->file_name); ?></td>
+														<td>
+															<a class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2b btn-xs" href="/get-file?id=<?php echo e($file->id); ?>">下载</a>
+														</td>
+                                                        <td>
+                                                            <?php echo e($file->upload_user); ?>
+
+                                                        </td>
+														<td>
+															<?php echo e($file->created_at); ?>
+
+														</td>
+													</tr>
+												<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+											</table>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!-- Modal Section -->
+		<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title custom-font text-lightred" id="defaultModal-title"></h3>
+					</div>
+					<div class="modal-body" id="defaultModal-body"></div>
+					<div class="modal-footer">
+						<button class="btn btn-lightred btn-ef btn-ef-4 btn-ef-4c" data-dismiss="modal"><i class="fa fa-arrow-left"></i> Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal Section -->
+		<script src="/assets/admin/js/vendor/jquery/jquery-1.11.2.min.js"></script>
+		<script src="/assets/admin/js/vendor/bootstrap/bootstrap.min.js"></script>
+		<script src="/assets/admin/js/vendor/jRespond/jRespond.min.js"></script>
+		<script src="/assets/admin/js/vendor/animsition/js/jquery.animsition.min.js"></script>
+		<script src="/assets/admin/js/main.js"></script>
+		<script src="/assets/admin/js/custom.js"></script>
+        <script src="/assets/js/fileinput.min.js"></script>
+        <script src="/assets/themes/fa/theme.js"></script>
+        <script src="/assets/js/locales/zh.js"></script>
+	</body>
+</html>

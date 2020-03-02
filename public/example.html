@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>JSON Test</title>
+        <meta name="msapplication-TileImage" content="/favicon.ico">
+        <link rel="icon" href="/favicon.ico" sizes="32x32">
+        <link rel="icon" href="/favicon.ico" sizes="192x192">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="/favicon.ico">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    </head>
+    <body>
+        <ul class="timeline">
+            
+        </ul>
+        <script src="/assets/vendor/jquery-v1.11.3/jquery.min.js"></script>
+        <script>
+            $.getJSON("/changelog.json", function(data) {
+                $.each(data.changelog, function(i, changelog) {
+                    var dateid = "time-label-"+i;
+                    var logDate = changelog.date;
+                    $(".timeline").append('<li class="time-label" id='+dateid+'>'
+                        +'<span class="bg-yellow">'
+                        +logDate
+                        +'</span>'
+                        +'</li>'
+                    );
+                    $.each(changelog.rows, function(i, rows) {
+                        var rowsid = "rows-"+i;
+                        $(".timeline").append(
+                            '<li class="'+dateid+' '+rowsid+'">'
+                            +'<i class="fa fa-user bg-blue"></i>'
+                            +'<div class="timeline-item">'
+                            +'<span class="time"><i class="fa fa-clock-o"></i>'
+                            +rows.time
+                            +'</span>'
+                            +'<h3 class="timeline-header no-border">'
+                        );
+                        if (rows.type == "fix") {
+                            $("."+dateid+'.'+rowsid+">div>h3").append('<a class="text-red">修复：</a>');
+                            console.log("a append.");
+                        } else if (rows.type == "enhance") {
+                            $("."+dateid+'.'+rowsid+">div>h3").append('<a class="text-green">优化：</a>');
+                        };
+                        $("."+dateid+'.'+rowsid+">div>h3").append(rows.content);
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
